@@ -116,14 +116,25 @@
     </div>
 
     <script>
+       // ... existing code ...
+    <script>
         let cards = [];
         let currentCardIndex = 0;
 
-        // Load cards from localStorage if they exist
-        if (localStorage.getItem('flashcards')) {
-            cards = JSON.parse(localStorage.getItem('flashcards'));
-            updateCard();
+        // Load cards from CSV file when page loads
+        async function loadCardsFromCSV() {
+            try {
+                const response = await fetch('load_cards.php');
+                const data = await response.json();
+                cards = data;
+                updateCard();
+            } catch (error) {
+                console.error('Error loading CSV:', error);
+            }
         }
+
+        // Call this when page loads
+        loadCardsFromCSV();
 
         document.querySelector('.card').addEventListener('click', function() {
             this.classList.toggle('flipped');
@@ -148,20 +159,33 @@
             form.style.display = form.style.display === 'none' ? 'block' : 'none';
         });
 
-        document.getElementById('saveCard').addEventListener('click', function() {
+        document.getElementById('saveCard').addEventListener('click', async function() {
             const question = document.getElementById('questionInput').value;
             const answer = document.getElementById('answerInput').value;
             
             if (question && answer) {
-                cards.push({ question, answer });
-                localStorage.setItem('flashcards', JSON.stringify(cards));
-                
-                document.getElementById('questionInput').value = '';
-                document.getElementById('answerInput').value = '';
-                document.getElementById('addCardForm').style.display = 'none';
-                
-                currentCardIndex = cards.length - 1;
-                updateCard();
+                try {
+                    const formData = new FormData();
+                    formData.append('question', question);
+                    formData.append('answer', answer);
+
+                    const response = await fetch('save_card.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        cards.push({ question, answer });
+                        document.getElementById('questionInput').value = '';
+                        document.getElementById('answerInput').value = '';
+                        document.getElementById('addCardForm').style.display = 'none';
+                        currentCardIndex = cards.length - 1;
+                        updateCard();
+                    }
+                } catch (error) {
+                    console.error('Error saving card:', error);
+                    alert('Failed to save card');
+                }
             }
         });
 
