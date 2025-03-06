@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 $cards = [];
-if (($handle = fopen("cards.csv", "r")) !== FALSE) {
+if (($handle = fopen("flashcards.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $cards[] = ['question' => $data[0], 'answer' => $data[1]];
     }
