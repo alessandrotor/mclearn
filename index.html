@@ -116,11 +116,9 @@
     </div>
 
     <script>
-       // ... existing code ...
         let cards = [];
         let currentCardIndex = 0;
 
-        // Load cards from CSV file when page loads
         async function loadCardsFromCSV() {
             try {
                 const response = await fetch('load_cards.php');
@@ -132,7 +130,6 @@
             }
         }
 
-        // Call this when page loads
         loadCardsFromCSV();
 
         document.querySelector('.card').addEventListener('click', function() {
@@ -161,7 +158,7 @@
         document.getElementById('saveCard').addEventListener('click', async function() {
             const question = document.getElementById('questionInput').value;
             const answer = document.getElementById('answerInput').value;
-            
+
             if (question && answer) {
                 try {
                     const formData = new FormData();
