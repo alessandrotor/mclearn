@@ -1,7 +1,14 @@
 <?php
 header('Content-Type: application/json');
 $cards = [];
-if (($handle = fopen("flashcards.csv", "r")) !== FALSE) {
+
+// Ensure flashcards.csv exists and is readable
+$filename = "flashcards.csv";
+if (!file_exists($filename)) {
+    die(json_encode(['error' => 'Flashcards file not found']));
+}
+
+if (($handle = fopen($filename, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         // Create a question by combining columns 0-6 
         $question = $data[0] . " - " . $data[1] . " - " . $data[2] . " - " . $data[3];
@@ -19,6 +26,9 @@ if (($handle = fopen("flashcards.csv", "r")) !== FALSE) {
         }
     }
     fclose($handle);
+} else {
+    die(json_encode(['error' => 'Could not open flashcards file']));
 }
+
 echo json_encode($cards);
 ?>
