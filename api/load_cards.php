@@ -8,4 +8,5 @@ if (($handle = fopen("flashcards.csv", "r")) !== FALSE) {
     fclose($handle);
 }
 echo json_encode($cards);
+header('Access-Control-Allow-Origin: *');
 ?>
