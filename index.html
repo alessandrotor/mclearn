@@ -121,12 +121,13 @@
 
         async function loadCardsFromCSV() {
             try {
-                const response = await fetch('load_cards.php');
+                const response = await fetch('api/load_cards.php');
                 const data = await response.json();
                 cards = data;
                 updateCard();
             } catch (error) {
                 console.error('Error loading CSV:', error);
+                alert('Failed to load flashcards');
             }
         }
 
