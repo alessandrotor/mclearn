@@ -131,7 +131,10 @@
             }
         }
 
-        loadCardsFromCSV();
+        // Load cards immediately when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            loadCardsFromCSV();
+        });
 
         document.querySelector('.card').addEventListener('click', function() {
             this.classList.toggle('flipped');
