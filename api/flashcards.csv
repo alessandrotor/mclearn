@@ -1,5 +1,4 @@
-Pane Big Mac Ceste impilate Inizio Scongelo,12 Ore
-Usare entro,2,Giorni
+Pane,Big Mac,Ceste impilate,Inizio Scongelo,12,Ore,Usare entro,2,Giorni
 Pane,GranCrispy,Ceste impilate,Inizio Scongelo,12,Ore,Usare entro,2,Giorni
 Pane,Muffin,Ceste impilate,Inizio Scongelo,12,Ore,Usare entro,2,Giorni
 Pane,Ovale,Ceste impilate,Inizio Scongelo,12,Ore,Usare entro,2,Giorni
@@ -16,7 +15,7 @@ Pane,Regular,Ceste separate,Inizio Scongelo,3,Ore,Usare entro,2,Giorni
 Pane,Royal,Ceste separate,Inizio Scongelo,3,Ore,Usare entro,2,Giorni
 Pane,Sesamo e Papavero,Ceste separate,Inizio Scongelo,3,Ore,Usare entro,2,Giorni
 Proteina,Bacon Busta Aperta,Busta aperta,Apertura Busta,, ,Usare entro,1,Giorni
-Proteina,Bacon Cotto,,Preparato,4,Ore,Usare entro,,
+Proteina,Bacon Cotto,,Preparato,4,Ore,
 Proteina,Bacon patate Busta,Busta aperta,Apertura Busta,, ,Usare entro,1,Giorni
 Proteina,Bacon patate Cambro,Tempering,Tempering,20,Minuti,Usare entro,4,Ore
 Proteina,Burro,Apertura Bottiglia,Segue Scadenza Primaria,, ,Segue Scadenza Primaria,,
